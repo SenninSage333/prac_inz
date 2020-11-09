@@ -20,7 +20,12 @@ export default ({ currentUser }) => {
   return (
     <nav className="navbar navbar-light bg-warning">
       <Link href="/">
-        <a className="navbar-brand">Hive</a>
+        <a className="navbar-brand">
+          <h2>
+            Hive
+            <img src="/hive.png" style={{ width: '50px', height: '50px' }} />
+          </h2>
+        </a>
       </Link>
       <div className="d-flex justify-content-end">
         <ul className="nav d-flex align-items-center">{links}</ul>

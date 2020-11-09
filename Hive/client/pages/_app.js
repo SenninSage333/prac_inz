@@ -1,11 +1,16 @@
-import Axios from 'axios';
+import Head from 'next/head';
 import 'bootstrap/dist/css/bootstrap.css';
 import buildClient from '../api/build-client';
 import Header from '../components/header';
+import '../styles/main_style.css';
 
 const AppComponent = ({ Component, pageProps, currentUser }) => {
   return (
     <div>
+      <Head>
+        <link rel="icon" href="/hive.ico" />
+        <title>HIVE</title>
+      </Head>
       <Header currentUser={currentUser} />
       <Component {...pageProps} />
     </div>
