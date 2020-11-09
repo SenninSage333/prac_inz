@@ -1,0 +1,5 @@
+stop.sh
+start.sh
+gitadd.sh
+**/node_modules
+client/.next
