@@ -11,7 +11,9 @@ export default ({ currentUser }) => {
       return (
         <li key={href} className="nav-item">
           <Link href={href}>
-            <a className="nav-link">{label}</a>
+            <a className="nav-link text-dark">
+              <h4>{label}</h4>
+            </a>
           </Link>
         </li>
       );
