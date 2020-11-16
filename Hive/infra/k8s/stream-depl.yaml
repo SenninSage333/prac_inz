@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stream-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stream
+  template:
+    metadata:
+      labels:
+        app: stream
+    spec:
+      containers:
+        - name: stream
+          image: senninsage333/stream:latest
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stream-srv
+spec:
+  selector:
+    app: stream
+  ports:
+    - name: stream
+      protocol: TCP
+      port: 3002
+      targetPort: 3002

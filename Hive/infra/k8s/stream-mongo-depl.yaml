@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stream-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stream-mongo
+  template:
+    metadata:
+      labels:
+        app: stream-mongo
+    spec:
+      containers:
+        - name: stream-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stream-mongo-srv
+spec:
+  selector:
+    app: stream-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 30002
+      targetPort: 27017

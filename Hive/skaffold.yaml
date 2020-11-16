@@ -16,6 +16,14 @@ build:
         manual:
           - src: 'src/***/*.ts'
             dest: .
+    - image: senninsage333/stream
+      context: stream
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/***/*.ts'
+            dest: .
     - image: senninsage333/client
       context: client
       docker:
