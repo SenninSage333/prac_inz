@@ -16,6 +16,8 @@ spec:
         - name: stream
           image: senninsage333/stream:latest
           env:
+            - name: MONGO_URI
+              value: 'mongodb://stream-mongo-srv:27017/videos'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
