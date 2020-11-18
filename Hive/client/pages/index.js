@@ -1,16 +1,22 @@
 import buildClient from '../api/build-client';
+import MainPage from '../components/main-page';
+import MainPageVideos from '../components/main-page-videos';
 
-const LandingPage = ({ currentUser }) => {
+const LandingPage = ({ currentUser, videos }) => {
   return currentUser ? (
-    <h1>You are signed in!</h1>
+    <MainPageVideos currentUser={currentUser} videos={videos}></MainPageVideos>
   ) : (
-    <h1>You are not signed in!</h1>
+    <MainPage></MainPage>
   );
 };
 
 LandingPage.getInitialProps = async (context) => {
   const client = buildClient(context);
-  const { data } = await client.get('/api/users/currentuser');
+  const { data } = await client.get('api/users/currentuser');
+  const videosData = await client.get('api/videos');
+  const videos = videosData.data.allVideos;
+  data.videos = videos;
+  console.log(videos);
   return data;
 };
 

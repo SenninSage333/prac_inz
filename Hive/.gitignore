@@ -4,3 +4,4 @@ gitadd.sh
 **/node_modules
 client/.next
 stream/src/videos/**
+stream/src/videos_data.json

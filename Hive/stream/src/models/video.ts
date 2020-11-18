@@ -48,4 +48,4 @@ videoSchema.statics.build = (attrs: VideoAttrs) => {
 
 const Video = mongoose.model<VideoDoc, VideoModel>('Video', videoSchema);
 
-export { Video };
+export { Video, VideoAttrs };
