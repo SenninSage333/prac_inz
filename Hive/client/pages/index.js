@@ -12,11 +12,10 @@ const LandingPage = ({ currentUser, videos }) => {
 
 LandingPage.getInitialProps = async (context) => {
   const client = buildClient(context);
-  const { data } = await client.get('api/users/currentuser');
-  const videosData = await client.get('api/videos');
+  const { data } = await client.get('/api/users/currentuser');
+  const videosData = await client.get('/api/videos');
   const videos = videosData.data.allVideos;
   data.videos = videos;
-  console.log(videos);
   return data;
 };
 
