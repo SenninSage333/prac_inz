@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/api/videos', async (req: Request, res: Response) => {
   const allVideos = await Video.find({});
-  console.log('Sending');
   res.status(200).send({ allVideos });
 });
 

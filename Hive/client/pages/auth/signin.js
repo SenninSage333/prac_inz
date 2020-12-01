@@ -32,6 +32,11 @@ export default () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
+              style={{
+                backgroundColor: '#ffc107',
+                borderColor: 'black',
+                color: 'black',
+              }}
             ></input>
             <label>Password</label>
             <input
@@ -39,6 +44,11 @@ export default () => {
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               className="form-control"
+              style={{
+                backgroundColor: '#ffc107',
+                borderColor: 'black',
+                color: 'black',
+              }}
             ></input>
           </div>
           {errors}

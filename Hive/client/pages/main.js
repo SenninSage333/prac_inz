@@ -8,11 +8,39 @@ const MainPage = ({ currentUser, videos }) => {
       Router.push('/');
     }, '');
   }
+  const cards = [];
+
+  for (let video of videos) {
+    const card = (
+      <div
+        className="card"
+        style={{
+          width: '180px',
+          border: '2px #ffc107 solid',
+          backgroundColor: '#1a1a1a',
+          marginBottom: '5%',
+        }}
+      >
+        <div className="card-body">
+          <h5 className="card-title">{video.title}</h5>
+          <p className="card-text">{video.description}</p>
+        </div>
+      </div>
+    );
+    cards.push(card);
+  }
+
   return (
     <div>
       <h1 style={{ fontFamily: 'cursive' }}>
         Welcome back {currentUser.email} !!!
       </h1>
+      <div
+        className="d-flex flex-row flex-wrap justify-content-around"
+        style={{ margin: '5%' }}
+      >
+        {cards}
+      </div>
     </div>
   );
 };

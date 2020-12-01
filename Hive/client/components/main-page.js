@@ -40,8 +40,11 @@ export default () => {
           <h3>Here's a welcoming video!</h3>
         </div>
         <div className="p2">
-          <video id="player" controls>
-            <source src="/api/videos/welcome" type="video/mp4"></source>
+          <video id="player" controls width="500px">
+            <source
+              src="https://hive.dev/api/videos/welcome/stream/welcome"
+              type="video/mp4"
+            ></source>
           </video>
         </div>
       </div>

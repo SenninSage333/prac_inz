@@ -3,7 +3,7 @@ import fs from 'fs';
 
 const router = express.Router();
 
-router.get('/api/videos/welcome', async (req, res) => {
+router.get('/api/videos/welcome/stream/welcome', async (req, res) => {
   const path = './src/videos/welcome_video.mp4';
   const stat = fs.statSync(path);
   const fileSize = stat.size;
