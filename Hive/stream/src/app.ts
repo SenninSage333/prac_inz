@@ -6,6 +6,7 @@ import { errorHandler, NotFoundError, currentUser } from '@tjhive/common';
 import { getVideosRouter } from './routes/get-videos';
 import { getVideoRouter } from './routes/get-video';
 import { streamVideoRouter } from './routes/stream-video';
+import { streamWelcomeVideoRouter } from './routes/welcome';
 const app = express();
 app.set('trust proxy', true);
 app.use(json());
@@ -21,6 +22,7 @@ app.use(currentUser);
 app.use(getVideosRouter);
 app.use(getVideoRouter);
 app.use(streamVideoRouter);
+app.use(streamWelcomeVideoRouter);
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError();

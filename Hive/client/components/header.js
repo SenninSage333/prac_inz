@@ -18,10 +18,11 @@ export default ({ currentUser }) => {
         </li>
       );
     });
+  const href = currentUser ? '/main' : '/';
 
   return (
     <nav className="navbar navbar-light bg-warning">
-      <Link href="/">
+      <Link href={href}>
         <a className="navbar-brand">
           <h2>
             Hive

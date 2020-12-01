@@ -36,6 +36,14 @@ export default () => {
             </a>
           </Link>
         </div>
+        <div className="p2">
+          <h3>Here's a welcoming video!</h3>
+        </div>
+        <div className="p2">
+          <video id="player" controls>
+            <source src="/api/videos/welcome" type="video/mp4"></source>
+          </video>
+        </div>
       </div>
     </div>
   );
