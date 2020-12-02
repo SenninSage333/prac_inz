@@ -5,3 +5,4 @@ gitadd.sh
 client/.next
 stream/src/videos/**
 stream/src/videos_data.json
+stream/src/logos/**

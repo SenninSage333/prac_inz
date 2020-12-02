@@ -11,6 +11,7 @@ const MainPage = ({ currentUser, videos }) => {
   const cards = [];
 
   for (let video of videos) {
+    const url = 'https://hive.dev/api/videos/get/logo/logoid/' + video.id;
     const card = (
       <div
         className="card"
@@ -21,6 +22,7 @@ const MainPage = ({ currentUser, videos }) => {
           marginBottom: '5%',
         }}
       >
+        <img className="card-img-top" src={url} alt={video.title} />
         <div className="card-body">
           <h5 className="card-title">{video.title}</h5>
           <p className="card-text">{video.description}</p>

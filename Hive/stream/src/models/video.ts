@@ -4,12 +4,14 @@ interface VideoAttrs {
   title: string;
   description: string;
   path: string;
+  logo: string;
 }
 
 interface VideoDoc extends mongoose.Document {
   title: string;
   description: string;
   path: string;
+  logo: string;
 }
 
 interface VideoModel extends mongoose.Model<VideoDoc> {
@@ -27,6 +29,10 @@ const videoSchema = new mongoose.Schema(
       required: true,
     },
     path: {
+      type: String,
+      required: true,
+    },
+    logo: {
       type: String,
       required: true,
     },

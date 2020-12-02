@@ -7,6 +7,7 @@ import { getVideosRouter } from './routes/get-videos';
 import { getVideoRouter } from './routes/get-video';
 import { streamVideoRouter } from './routes/stream-video';
 import { streamWelcomeVideoRouter } from './routes/welcome';
+import { getLogoRouter } from './routes/get-logo';
 const app = express();
 app.set('trust proxy', true);
 app.use(json());
@@ -23,6 +24,7 @@ app.use(getVideosRouter);
 app.use(getVideoRouter);
 app.use(streamVideoRouter);
 app.use(streamWelcomeVideoRouter);
+app.use(getLogoRouter);
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError();
