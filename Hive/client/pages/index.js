@@ -4,17 +4,16 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 
 const LandingPage = ({ currentUser }) => {
-  if (currentUser != null) {
-    useEffect(() => {
-      Router.push('/main');
-    }, '');
-  }
   return <MainPage></MainPage>;
 };
 
 LandingPage.getInitialProps = async (context) => {
   const client = buildClient(context);
   const { data } = await client.get('/api/users/currentuser');
+  if (data.currentUser != null) {
+    context.res.writeHead(301, { Location: '/main' });
+    context.res.end();
+  }
   return data;
 };
 

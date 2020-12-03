@@ -1,4 +1,6 @@
+import { requireAuth } from '@tjhive/common';
 import mongoose from 'mongoose';
+import { getLogoRouter } from '../routes/get-logo';
 
 interface VideoAttrs {
   title: string;
@@ -43,6 +45,7 @@ const videoSchema = new mongoose.Schema(
         ret.id = ret._id;
         delete ret._id;
         delete ret.__v;
+        delete ret.logo;
       },
     },
   }
