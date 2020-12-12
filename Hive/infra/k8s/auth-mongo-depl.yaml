@@ -1,3 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: auth-mongo-pv
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: '/run/desktop/mnt/host/wsl/authmongo'
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: auth-mongo-pvc
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,6 +42,14 @@ spec:
       containers:
         - name: auth-mongo
           image: mongo
+          volumeMounts:
+            - mountPath: /data/db
+              name: auth-mongo-data
+      volumes:
+        - name: auth-mongo-data
+          persistentVolumeClaim:
+            claimName: auth-mongo-pvc
+      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service

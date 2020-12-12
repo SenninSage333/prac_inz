@@ -20,17 +20,18 @@ const startUp = async () => {
   } catch (err) {
     console.log(err);
   }
-  const videos = await Video.find({});
-  if (videos.length == 0) {
-    console.log('No videos in database');
-    const videosData = JSON.parse(
-      fs.readFileSync('./src/videos_data.json').toString('utf-8')
-    ) as VideoAttrs[];
-    videosData.map(async (video) => {
+
+  const videosData = JSON.parse(
+    fs.readFileSync('./src/videos_data.json').toString('utf-8')
+  ) as VideoAttrs[];
+  videosData.map(async (video) => {
+    let dbvideo = await Video.findOne({ title: video.title });
+    if (!dbvideo) {
+      console.log(`Adding video ${video.title}`);
       const videoToSave = Video.build(video);
       await videoToSave.save();
-    });
-  }
+    }
+  });
 
   app.listen(3002, () => {
     console.log('Auth is listening on port 3002!');
