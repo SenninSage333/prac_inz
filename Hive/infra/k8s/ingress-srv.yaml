@@ -16,7 +16,7 @@ spec:
               service:
                 name: auth-srv
                 port:
-                  number: 3001
+                  number: 3000
           - path: /api/videos/?(.*)
             pathType: Prefix
             backend:
@@ -24,6 +24,13 @@ spec:
                 name: stream-srv
                 port:
                   number: 3002
+          - path: /api/comments/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: comments-srv
+                port:
+                  number: 3003
           - path: /?(.*)
             pathType: Prefix
             backend:

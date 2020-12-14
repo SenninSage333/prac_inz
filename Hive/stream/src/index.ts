@@ -34,7 +34,7 @@ const startUp = async () => {
   });
 
   app.listen(3002, () => {
-    console.log('Auth is listening on port 3002!');
+    console.log('Stream is listening on port 3002!');
   });
 };
 

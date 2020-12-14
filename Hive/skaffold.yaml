@@ -32,3 +32,11 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
+    - image: senninsage333/hivecomments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/***/*.ts'
+            dest: .

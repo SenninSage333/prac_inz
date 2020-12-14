@@ -19,8 +19,8 @@ const startUp = async () => {
     console.log(err);
   }
 
-  app.listen(3000, () => {
-    console.log('Auth is listening on port 3000!');
+  app.listen(3003, () => {
+    console.log('Comments is listening on port 3003!');
   });
 };
 
