@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: '/run/desktop/mnt/host/wsl/streammongo'
+    path: '/run/desktop/mnt/host/j/Hivemongos/streammongo'
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

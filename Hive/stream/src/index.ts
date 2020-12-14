@@ -27,7 +27,7 @@ const startUp = async () => {
   videosData.map(async (video) => {
     let dbvideo = await Video.findOne({ title: video.title });
     if (!dbvideo) {
-      console.log(`Adding video ${video.title}`);
+      console.log(`Adding video: ${video.title}`);
       const videoToSave = Video.build(video);
       await videoToSave.save();
     }

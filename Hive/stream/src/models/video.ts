@@ -1,6 +1,4 @@
-import { requireAuth } from '@tjhive/common';
 import mongoose from 'mongoose';
-import { getLogoRouter } from '../routes/get-logo';
 
 interface VideoAttrs {
   title: string;
