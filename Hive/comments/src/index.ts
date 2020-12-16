@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { app } from './app';
+import { Comment } from './models/comment';
 
 const startUp = async () => {
   if (!process.env.JWT_KEY) {
@@ -19,7 +20,8 @@ const startUp = async () => {
     console.log(err);
   }
 
-  app.listen(3003, () => {
+  app.listen(3003, async () => {
+    await Comment.deleteMany({});
     console.log('Comments is listening on port 3003!');
   });
 };

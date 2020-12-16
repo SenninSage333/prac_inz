@@ -3,13 +3,17 @@ import mongoose from 'mongoose';
 interface CommentAttrs {
   videoid: string;
   userid: string;
+  useremail: string;
   content: string;
+  date: string;
 }
 
 interface CommentDoc extends mongoose.Document {
   videoid: string;
   userid: string;
+  useremail: string;
   content: string;
+  date: string;
 }
 
 interface CommentModel extends mongoose.Model<CommentDoc> {
@@ -26,7 +30,15 @@ const commentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    useremail: {
+      type: String,
+      required: true,
+    },
     content: {
+      type: String,
+      required: true,
+    },
+    date: {
       type: String,
       required: true,
     },

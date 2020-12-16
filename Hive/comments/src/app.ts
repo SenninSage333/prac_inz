@@ -6,6 +6,7 @@ import cookieSession from 'cookie-session';
 import { getVideoCommentsRouter } from './routes/get-comments';
 import { currentUser, errorHandler, NotFoundError } from '@tjhive/common';
 import { addVideoCommentRouter } from './routes/add-comment';
+import { removeCommentRouter } from './routes/remove-comment';
 
 const app = express();
 app.set('trust proxy', true);
@@ -21,6 +22,7 @@ app.use(currentUser);
 
 app.use(getVideoCommentsRouter);
 app.use(addVideoCommentRouter);
+app.use(removeCommentRouter);
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError();

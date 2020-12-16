@@ -4,11 +4,12 @@ import { Comment, CommentAttrs } from '../models/comment';
 
 const router = express.Router();
 
-router.get('/api/comments/add/:id', requireAuth, async (req, res) => {
+router.post('/api/comments/add', requireAuth, async (req, res) => {
   const comment = req.body as CommentAttrs;
   const commentToSave = Comment.build(comment);
   await commentToSave.save();
-  res.status(201).send(commentToSave);
+  console.log(comment);
+  res.status(201).send({});
 });
 
 export { router as addVideoCommentRouter };

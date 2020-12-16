@@ -31,6 +31,20 @@ spec:
                 name: stream-srv
                 port:
                   number: 3002
+          - path: /api/comments/add/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: comments-srv
+                port:
+                  number: 3003
+          - path: /api/comments/remove/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: comments-srv
+                port:
+                  number: 3003
           - path: /api/comments/?(.*)
             pathType: Prefix
             backend:

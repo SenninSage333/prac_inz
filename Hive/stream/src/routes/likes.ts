@@ -8,7 +8,10 @@ router.post(
   '/api/likes/:id',
   requireAuth,
   async (req: Request, res: Response) => {
-    const video = (await Video.find({ _id: req.params.id }))[0];
+    const video = await Video.findOne({ _id: req.params.id });
+    if (!video) {
+      return res.status(404).send({});
+    }
     const { like, id } = req.body;
     console.log(like + ' ' + id);
     if (like) {
