@@ -17,6 +17,7 @@ router.post(
       video.likes = video.likes.filter((user) => user != id);
     }
     console.log(video.likes);
+    await video.save();
     res.status(201).send({});
   }
 );

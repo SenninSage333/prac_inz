@@ -5,7 +5,8 @@ import { Comment } from '../models/comment';
 const router = express.Router();
 
 router.get('/api/comments/:id', requireAuth, async (req, res) => {
-  const comments = await Comment.find({});
+  const id = req.params.id;
+  const comments = await Comment.find({ videoid: id });
   res.status(200).send(comments);
 });
 
