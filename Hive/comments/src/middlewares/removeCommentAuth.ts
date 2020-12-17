@@ -9,7 +9,11 @@ export const removeCommentAuth = async (
 ) => {
   const id = req.params.id;
   const comment = await Comment.findOne({ _id: id });
-  if (req.currentUser && comment && req.currentUser.id != comment.userid) {
+  if (
+    req.currentUser &&
+    comment &&
+    req.currentUser.email != comment.useremail
+  ) {
     throw new NotAuthorizedError();
   }
 

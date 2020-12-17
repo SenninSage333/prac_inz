@@ -6,7 +6,7 @@ const StreamPage = ({ currentUser, video, isliked, videocomments }) => {
   const createComments = (comments) => {
     return comments.map((comment) => {
       let deleteButton = null;
-      if (comment.userid === currentUser.id) {
+      if (comment.useremail === currentUser.email) {
         deleteButton = (
           <button
             className="btn btn-danger"
@@ -79,7 +79,6 @@ const StreamPage = ({ currentUser, video, isliked, videocomments }) => {
     let date = new Date().toUTCString();
     const comment = {
       videoid: video.id,
-      userid: currentUser.id,
       useremail: currentUser.email,
       content,
       date,
@@ -147,6 +146,7 @@ const StreamPage = ({ currentUser, video, isliked, videocomments }) => {
               color: 'black',
             }}
             autoComplete="off"
+            placeholder="Write a comment"
             required
           ></input>
           <button className="btn btn-warning" style={{ margin: '3%' }}>

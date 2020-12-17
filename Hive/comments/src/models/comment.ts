@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 
 interface CommentAttrs {
   videoid: string;
-  userid: string;
   useremail: string;
   content: string;
   date: string;
@@ -10,7 +9,6 @@ interface CommentAttrs {
 
 interface CommentDoc extends mongoose.Document {
   videoid: string;
-  userid: string;
   useremail: string;
   content: string;
   date: string;
@@ -23,10 +21,6 @@ interface CommentModel extends mongoose.Model<CommentDoc> {
 const commentSchema = new mongoose.Schema(
   {
     videoid: {
-      type: String,
-      required: true,
-    },
-    userid: {
       type: String,
       required: true,
     },

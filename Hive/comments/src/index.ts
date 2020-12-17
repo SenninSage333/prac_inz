@@ -20,8 +20,7 @@ const startUp = async () => {
     console.log(err);
   }
 
-  app.listen(3003, async () => {
-    await Comment.deleteMany({});
+  app.listen(3003, () => {
     console.log('Comments is listening on port 3003!');
   });
 };
