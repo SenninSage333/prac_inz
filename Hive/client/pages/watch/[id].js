@@ -58,7 +58,7 @@ const StreamPage = ({ currentUser, video, isliked, videocomments }) => {
   const sendLike = async (like) => {
     await axios.post(`/api/likes/${video.id}`, {
       like,
-      id: currentUser.id,
+      email: currentUser.email,
     });
   };
 
@@ -183,7 +183,7 @@ StreamPage.getInitialProps = async (context) => {
   const logoData = await client.get(`/api/videos/get/logo/logoid/${video.id}`);
   video.logo = logoData.data;
   data.video = video;
-  if (video.likes.includes(data.currentUser.id)) {
+  if (video.likes.includes(data.currentUser.email)) {
     data.isliked = true;
   } else {
     data.isliked = false;
