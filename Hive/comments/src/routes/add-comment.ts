@@ -8,7 +8,6 @@ router.post('/api/comments/add', requireAuth, async (req, res) => {
   const comment = req.body as CommentAttrs;
   const commentToSave = Comment.build(comment);
   await commentToSave.save();
-  console.log(comment);
   res.status(201).send({});
 });
 

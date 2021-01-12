@@ -38,8 +38,8 @@ const StreamPage = ({ currentUser, video, isliked, videocomments }) => {
         >
           {deleteButton}
           <span style={{ fontSize: 'x-small' }}>{comment.date}</span>
-          <h2>{comment.useremail}</h2>
-          <span>{comment.content}</span>
+          <h4>{comment.useremail}</h4>
+          <h2>{comment.content}</h2>
         </div>
       );
     });

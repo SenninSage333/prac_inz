@@ -15,13 +15,11 @@ router.post(
       return res.status(404).send({});
     }
     const { like, email } = req.body;
-    console.log(like + ' ' + email);
     if (like) {
       video.likes.push(email);
     } else {
       video.likes = video.likes.filter((user) => user != email);
     }
-    console.log(video.likes);
     await video.save();
     res.status(201).send({});
   }

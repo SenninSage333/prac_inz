@@ -22,7 +22,7 @@ const startUp = async () => {
   }
 
   const videosData = JSON.parse(
-    fs.readFileSync('./src/videos_data.json').toString('utf-8')
+    fs.readFileSync('/app/videos/videos_data.json').toString('utf-8')
   ) as VideoAttrs[];
   videosData.map(async (video) => {
     let dbvideo = await Video.findOne({ title: video.title });
