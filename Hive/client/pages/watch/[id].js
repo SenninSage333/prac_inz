@@ -55,9 +55,8 @@ const StreamPage = ({ currentUser, video, isliked, videocomments }) => {
 
   var style = like ? liked : unliked;
 
-  const sendLike = async (like) => {
+  const sendLike = async () => {
     await axios.post(`/api/likes/${video.id}`, {
-      like,
       email: currentUser.email,
     });
   };
@@ -117,7 +116,7 @@ const StreamPage = ({ currentUser, video, isliked, videocomments }) => {
           style={style}
           onClick={async () => {
             setLike(!like);
-            await sendLike(!like);
+            await sendLike();
             setLikes(await updateLikes());
           }}
         >

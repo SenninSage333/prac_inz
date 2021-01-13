@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { Video } from '../models/video';
+import { Video, VideoDoc } from '../models/video';
 import { requireAuth } from '@tjhive/common';
 import { likeAuth } from '../middlewares/like-auth';
 
@@ -10,15 +10,21 @@ router.post(
   requireAuth,
   likeAuth,
   async (req: Request, res: Response) => {
-    const video = await Video.findOne({ _id: req.params.id });
+    const video = (await Video.findOne({ _id: req.params.id })) as VideoDoc;
     if (!video) {
       return res.status(404).send({});
     }
-    const { like, email } = req.body;
+    const { email } = req.body;
+    var like = false;
+    video.likes.map((user: string) => {
+      if (user === email) {
+        like = true;
+      }
+    });
     if (like) {
-      video.likes.push(email);
+      video.likes = video.likes.filter((user: string) => user != email);
     } else {
-      video.likes = video.likes.filter((user) => user != email);
+      video.likes.push(email);
     }
     await video.save();
     res.status(201).send({});
