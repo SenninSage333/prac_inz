@@ -4,3 +4,4 @@ gitadd.sh
 **/node_modules
 client/.next
 dockerbuild.sh
+npmupdate.sh
