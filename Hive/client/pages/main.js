@@ -3,31 +3,36 @@ import Link from 'next/link';
 
 const MainPage = ({ currentUser, videos }) => {
   const cards = [];
-
-  for (let video of videos) {
-    const url = `watch/${video.id}`;
-    const card = (
-      <Link href={url}>
-        <a className="nav-link" style={{ color: '#ffc107' }}>
-          <div
-            className="card"
-            style={{
-              width: '180px',
-              border: '2px #ffc107 solid',
-              backgroundColor: '#1a1a1a',
-              marginBottom: '5%',
-            }}
-          >
-            <img className="card-img-top" src={video.logo} alt={video.title} />
-            <div className="card-body">
-              <h5 className="card-title">{video.title}</h5>
-              <p className="card-text">{video.description}</p>
+  if (videos) {
+    for (let video of videos) {
+      const url = `watch/${video.id}`;
+      const card = (
+        <Link href={url}>
+          <a className="nav-link" style={{ color: '#ffc107' }}>
+            <div
+              className="card"
+              style={{
+                width: '180px',
+                border: '2px #ffc107 solid',
+                backgroundColor: '#1a1a1a',
+                marginBottom: '5%',
+              }}
+            >
+              <img
+                className="card-img-top"
+                src={video.logo}
+                alt={video.title}
+              />
+              <div className="card-body">
+                <h5 className="card-title">{video.title}</h5>
+                <p className="card-text">{video.description}</p>
+              </div>
             </div>
-          </div>
-        </a>
-      </Link>
-    );
-    cards.push(card);
+          </a>
+        </Link>
+      );
+      cards.push(card);
+    }
   }
 
   return (
