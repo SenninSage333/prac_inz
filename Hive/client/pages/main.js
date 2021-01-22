@@ -1,12 +1,13 @@
 import buildClient from '../api/build-client';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const MainPage = ({ currentUser, videos }) => {
-  const cards = [];
-  if (videos) {
+  const createVideoCards = (videos) => {
+    let mcards = [];
     for (let video of videos) {
-      const url = `watch/${video.id}`;
-      const card = (
+      let url = `watch/${video.id}`;
+      let card = (
         <Link href={url}>
           <a className="nav-link" style={{ color: '#ffc107' }}>
             <div
@@ -31,15 +32,67 @@ const MainPage = ({ currentUser, videos }) => {
           </a>
         </Link>
       );
-      cards.push(card);
+      mcards.push(card);
     }
+    return mcards;
+  };
+  var cards = [];
+  if (videos) {
+    cards = createVideoCards(videos);
   }
+
+  const [searchVideo, setSearchVideo] = useState(false);
+  const [searchVideoCards, setSearchVideoCards] = useState([]);
+  const [searchVideoName, setSearchVideoName] = useState('');
 
   return (
     <div>
       <h1 style={{ fontFamily: 'cursive' }}>
         Welcome back {currentUser.email} !!!
       </h1>
+      <input
+        type="text"
+        autoComplete="off"
+        className="form-control"
+        placeholder="Search for video"
+        value={searchVideoName}
+        onChange={(e) => {
+          if (e.target.value === '') {
+            setSearchVideo(false);
+          } else {
+            setSearchVideo(true);
+          }
+          setSearchVideoName(e.target.value);
+          let scards = [];
+          for (let video of videos) {
+            if (
+              video.title.toLowerCase().includes(e.target.value.toLowerCase())
+            ) {
+              scards.push(video);
+            }
+          }
+          setSearchVideoCards(createVideoCards(scards));
+        }}
+        style={{
+          width: '20%',
+          backgroundColor: '#ffc107',
+          borderColor: 'black',
+          color: 'black',
+          fontFamily: 'cursive',
+          fontSize: 'x-large',
+        }}
+      ></input>
+      {searchVideo && <h1>Found videos:</h1>}
+      {searchVideo && searchVideoCards.length > 0 && (
+        <div
+          className="d-flex flex-row flex-wrap justify-content-around"
+          style={{ margin: '5%' }}
+        >
+          {searchVideoCards}
+        </div>
+      )}
+      {searchVideo && searchVideoCards.length == 0 && <h2>Not found any</h2>}
+      {searchVideo && <h1>All videos:</h1>}
       <div
         className="d-flex flex-row flex-wrap justify-content-around"
         style={{ margin: '5%' }}

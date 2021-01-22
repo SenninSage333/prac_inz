@@ -13,7 +13,7 @@ router.get('/api/videos/get/logo/logoid/:id', requireAuth, async (req, res) => {
     throw new VideoNotFoundError();
   }
   const path = video.logo;
-  await fs.readFile(path, { encoding: 'base64' }, (err, image) => {
+  fs.readFile(path, { encoding: 'base64' }, (err, image) => {
     const dataUrl = `data:image/png;base64,${image}`;
     return res.status(200).send(dataUrl);
   });
