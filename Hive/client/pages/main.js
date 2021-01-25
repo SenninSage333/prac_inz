@@ -109,6 +109,7 @@ MainPage.getInitialProps = async (context) => {
   if (data.currentUser == null) {
     context.res.writeHead(301, { Location: '/' });
     context.res.end();
+    return;
   }
   const videosData = await client.get('/api/videos');
   const videos = videosData.data.allVideos;

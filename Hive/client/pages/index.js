@@ -13,6 +13,7 @@ LandingPage.getInitialProps = async (context) => {
   if (data.currentUser != null) {
     context.res.writeHead(301, { Location: '/main' });
     context.res.end();
+    return;
   }
   return data;
 };
